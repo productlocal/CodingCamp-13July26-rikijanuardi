@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER: Greeting + Clock ===== -->
+  <header class="header">
+    <div class="greeting-block">
+      <p id="greeting" class="greeting-text">Good morning!</p>
+      <h1 id="clock" class="clock">00:00:00</h1>
+      <p id="date-display" class="date-display">Loading date...</p>
+    </div>
+  </header>
+
+  <!-- ===== MAIN GRID ===== -->
+  <main class="dashboard-grid">
+
+    <!-- FOCUS TIMER -->
+    <section class="card" id="timer-card">
+      <h2 class="card-title">Focus Timer</h2>
+      <div class="timer-display" id="timer-display">25:00</div>
+      <div class="timer-controls">
+        <button class="btn btn-primary" id="timer-start">Start</button>
+        <button class="btn btn-secondary" id="timer-stop">Stop</button>
+        <button class="btn btn-ghost" id="timer-reset">Reset</button>
+      </div>
+      <p class="timer-label" id="timer-label">Ready to focus?</p>
+    </section>
+
+    <!-- TO-DO LIST -->
+    <section class="card" id="todo-card">
+      <h2 class="card-title">To-Do List</h2>
+
+      <div class="todo-input-row">
+        <input
+          type="text"
+          id="todo-input"
+          class="text-input"
+          placeholder="Add a new task..."
+          maxlength="120"
+        />
+        <button class="btn btn-primary" id="todo-add">Add</button>
+      </div>
+
+      <ul id="todo-list" class="todo-list">
+        <!-- Tasks rendered by JS -->
+      </ul>
+
+      <p class="todo-empty" id="todo-empty">No tasks yet. Add one above!</p>
+    </section>
+
+    <!-- QUICK LINKS -->
+    <section class="card" id="links-card">
+      <h2 class="card-title">Quick Links</h2>
+
+      <div class="link-input-group">
+        <input
+          type="text"
+          id="link-name"
+          class="text-input"
+          placeholder="Label (e.g. GitHub)"
+          maxlength="30"
+        />
+        <input
+          type="url"
+          id="link-url"
+          class="text-input"
+          placeholder="URL (e.g. https://github.com)"
+        />
+        <button class="btn btn-primary" id="link-add">Add Link</button>
+      </div>
+
+      <div id="links-grid" class="links-grid">
+        <!-- Links rendered by JS -->
+      </div>
+
+      <p class="todo-empty" id="links-empty">No links saved yet.</p>
+    </section>
+
+  </main>
+
+  <!-- EDIT TASK MODAL -->
+  <div id="edit-modal" class="modal-overlay hidden">
+    <div class="modal">
+      <h3 class="modal-title">Edit Task</h3>
+      <input type="text" id="edit-input" class="text-input" maxlength="120" />
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="edit-save">Save</button>
+        <button class="btn btn-ghost" id="edit-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

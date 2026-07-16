@@ -1,0 +1,13 @@
+{
+  "name": "todo-list-life-dashboard",
+  "version": "1.0.0",
+  "description": "Life Dashboard — Greeting, Timer, Tasks, Quick Links",
+  "scripts": {
+    "test": "jest --runInBand"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "fast-check": "^3.22.0"
+  }
+}

@@ -1,0 +1,501 @@
+/* ============================================================
+   Life Dashboard — style.css
+   ============================================================ */
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+  --bg:          #0f1117;
+  --surface:     #1a1d27;
+  --surface-alt: #22263a;
+  --border:      #2e3350;
+  --accent:      #6c63ff;
+  --accent-dark: #5248d6;
+  --accent-glow: rgba(108, 99, 255, 0.25);
+  --success:     #34d399;
+  --danger:      #f87171;
+  --text:        #e2e8f0;
+  --text-muted:  #8892a4;
+  --radius:      14px;
+  --radius-sm:   8px;
+  --shadow:      0 4px 24px rgba(0, 0, 0, 0.45);
+  --transition:  0.2s ease;
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 0 0 48px;
+  line-height: 1.6;
+}
+
+/* ---------- Header / Greeting ---------- */
+.header {
+  background: linear-gradient(135deg, #1a1d27 0%, #12152a 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 36px 24px 28px;
+  text-align: center;
+}
+
+.greeting-text {
+  font-size: 1.1rem;
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.clock {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.date-display {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- Dashboard Grid ---------- */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 32px auto 0;
+  padding: 0 24px;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.btn-secondary {
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--border);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--danger);
+  border: none;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+}
+
+.btn-danger:hover {
+  background: rgba(248, 113, 113, 0.12);
+  border-radius: var(--radius-sm);
+}
+
+.btn-edit {
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+}
+
+.btn-edit:hover {
+  color: var(--accent);
+  background: var(--accent-glow);
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- Text Input ---------- */
+.text-input {
+  flex: 1;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.92rem;
+  padding: 9px 14px;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  width: 100%;
+}
+
+.text-input::placeholder {
+  color: var(--text-muted);
+}
+
+.text-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* ---------- Focus Timer ---------- */
+.timer-display {
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  padding: 12px 0;
+  background: var(--surface-alt);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.timer-display.running {
+  color: var(--success);
+  border-color: var(--success);
+  box-shadow: 0 0 18px rgba(52, 211, 153, 0.2);
+}
+
+.timer-display.stopped {
+  color: var(--danger);
+  border-color: var(--danger);
+  box-shadow: 0 0 18px rgba(248, 113, 113, 0.15);
+}
+
+.timer-controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.timer-controls .btn {
+  flex: 1;
+  min-width: 80px;
+}
+
+.timer-label {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+/* ---------- To-Do List ---------- */
+.todo-input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.todo-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  transition: border-color var(--transition), background var(--transition);
+  animation: slideIn 0.18s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.todo-item:hover {
+  border-color: var(--accent);
+  background: #1e2133;
+}
+
+.todo-item.done {
+  opacity: 0.5;
+  border-color: var(--border);
+}
+
+.todo-item.done .todo-text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.todo-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 2px solid var(--border);
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.todo-checkbox:checked {
+  background: var(--success);
+  border-color: var(--success);
+}
+
+.todo-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 5px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 0.93rem;
+  color: var(--text);
+  word-break: break-word;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.todo-empty {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  text-align: center;
+  padding: 16px 0 4px;
+}
+
+.todo-empty.hidden {
+  display: none;
+}
+
+/* ---------- Quick Links ---------- */
+.link-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link-input-group .btn {
+  align-self: flex-start;
+}
+
+.links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.link-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 0.88rem;
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  animation: slideIn 0.18s ease;
+}
+
+.link-chip:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+  background: #1e2133;
+  color: var(--accent);
+}
+
+.link-chip .link-favicon {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.link-remove {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 0 0 0 4px;
+  line-height: 1;
+  transition: color var(--transition);
+}
+
+.link-remove:hover {
+  color: var(--danger);
+}
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: popIn 0.18s ease;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.modal-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .header {
+    padding: 24px 16px 20px;
+  }
+
+  .dashboard-grid {
+    padding: 0 14px;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .card {
+    padding: 20px 16px;
+  }
+
+  .timer-controls {
+    flex-direction: column;
+  }
+
+  .timer-controls .btn {
+    width: 100%;
+  }
+}
